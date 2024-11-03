@@ -14,6 +14,9 @@ class NoNaturalRegeneration : JavaPlugin() {
 
     override fun onDisable() {
         // Plugin shutdown logic
-        logger.info("NoNaturalRegeneration plugin has been disabled.")
+        server.worlds.forEach { world ->
+            world.setGameRuleValue("naturalRegeneration", "true")
+            logger.info("NoNaturalRegeneration plugin has been disabled.")
+        }
     }
 }
